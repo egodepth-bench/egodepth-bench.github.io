@@ -1,0 +1,115 @@
+WEBVTT
+
+NOTE English descriptions of the on-screen material. This video contains no speech or music.
+
+1
+00:00:00.650 --> 00:00:06.000
+EgoDepth-Bench: metric depth for egocentric manipulation.
+Camera-2 RGB and its ground-truth point cloud.
+
+2
+00:00:06.000 --> 00:00:11.000
+A head-worn capture rig records six synchronized RGB views.
+
+3
+00:00:11.000 --> 00:00:15.000
+Five active-infrared stereo modules capture depth.
+
+4
+00:00:15.000 --> 00:00:20.000
+A shared hardware trigger synchronizes capture at 30 Hz.
+
+5
+00:00:20.000 --> 00:00:25.000
+Everyday interaction across 37 physical sites.
+
+6
+00:00:25.000 --> 00:00:32.000
+941,233 synchronized timestamps, with six RGB views each:
+approximately 5.65 million RGB images.
+
+7
+00:00:32.000 --> 00:00:42.000
+Tabletop interaction. Six synchronized RGB views
+and the camera-2 ground-truth point cloud.
+
+8
+00:00:42.000 --> 00:00:52.000
+Handling mahjong tiles. Synchronized views and geometry.
+
+9
+00:00:52.000 --> 00:01:02.000
+Organizing a sofa. Synchronized views and geometry.
+
+10
+00:01:02.000 --> 00:01:12.000
+Tabletop object handling. Synchronized views and geometry.
+
+11
+00:01:12.000 --> 00:01:22.000
+Kitchen worktop. Synchronized views and geometry.
+
+12
+00:01:22.000 --> 00:01:30.000
+Metric ground-truth Z-depth is aligned
+with the camera-2 fisheye RGB image.
+
+13
+00:01:30.000 --> 00:01:36.000
+Capture five synchronized active-IR stereo pairs.
+
+14
+00:01:36.000 --> 00:01:41.000
+FoundationStereo reconstructs depth in each module.
+
+15
+00:01:41.000 --> 00:01:46.000
+Onboard depth from the 336L provides a consistency check.
+
+16
+00:01:46.000 --> 00:01:52.000
+Project and fuse the five depth maps into camera 2.
+
+17
+00:01:52.000 --> 00:01:56.000
+The result is metric ground truth
+aligned with the fisheye RGB image.
+
+18
+00:01:56.000 --> 00:02:00.000
+Physical validation uses a certified ball-bar
+with known sphere geometry and center spacing.
+
+19
+00:02:00.000 --> 00:02:04.000
+Fixed-radius sphere fitting estimates the sphere centers.
+
+20
+00:02:04.000 --> 00:02:08.000
+Median absolute center-spacing error: 1.27 mm
+across 1,220 accepted measurements.
+
+21
+00:02:08.000 --> 00:02:14.000
+Depth is evaluated over the full image,
+hand regions and manipulated objects.
+
+22
+00:02:14.000 --> 00:02:20.000
+24 training, 5 validation and 8 test sites.
+There is no site overlap between splits.
+
+23
+00:02:20.000 --> 00:02:26.000
+MapAnything adaptation uses six RGB views,
+calibrated rays and metric rig poses.
+
+24
+00:02:26.000 --> 00:02:32.000
+Metric AbsRel: 0.708 public to 0.091 fine-tuned.
+Equal-weight mean over eight held-out sites; Z = 0.25–2.0 m.
+
+25
+00:02:32.000 --> 00:02:40.000
+EgoDepth-Bench: Benchmarking Metric Depth
+for Egocentric Manipulation.

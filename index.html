@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EgoDepth-Bench · Benchmarking Metric Depth for Egocentric Manipulation</title>
+  <meta name="description" content="Six synchronized fisheye views and metric depth for 941,233 timestamps of real manipulation. Explore the dataset, depth comparisons, and evaluation across 37 physical sites.">
+  <link rel="preload" href="site-assets/figures/sequence-triptych.webp" as="image" type="image/webp">
+  <link rel="canonical" href="https://egodepth-bench.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="EgoDepth-Bench: Benchmarking Metric Depth for Egocentric Manipulation">
+  <meta property="og:description" content="Six synchronized views of real manipulation, with metric depth in the wearer's native fisheye view.">
+  <meta property="og:image" content="https://egodepth-bench.github.io/site-assets/figures/project-preview.jpg">
+  <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="EgoDepth-Bench, with matched RGB and metric depth from three egocentric manipulation sequences.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="site-assets/fonts/stixtwotext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="site-assets/site.css?v=c101a547">
+  <link rel="stylesheet" href="site-assets/sequences.css?v=0e42feee">
+  <script src="site-assets/sequence-player.js?v=6aa3ad98" defer></script>
+  <script src="site-assets/site.js?v=1f69f5c7" defer></script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">Skip to project</a>
+  <header class="mast">
+    <div class="wrap mast-inner">
+      <a href="#top" class="lab">GenRobot</a>
+      <nav aria-label="Contents"><a href="#sequence-gallery">Sequences</a><a href="#dataset">Capture</a><a href="#qualitative">Predictions</a><a href="#results">Results</a><a href="#citation">Cite</a></nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="wrap">
+      <header class="paper-head">
+        <h1><span class="project-title">EgoDepth<span>-Bench</span></span>
+          <span class="paper-title">Benchmarking Metric Depth for Egocentric Manipulation</span></h1>
+        <div class="byline"><p class="author-list"><a href="mailto:gaoyuan100@outlook.com" title="Corresponding author">Yuan Gao<sup>*</sup></a>, <span>Dongchen Wei</span>, <span>Xinyang Lin</span>, <span>Shuhua Cao</span>, <span>Xueliang Guo</span>, <span>Zhuohan Li</span>, <span>Yihao Wang</span></p>
+          <p class="affil">GenRobot</p>
+        </div>
+        <div class="paper-links"><a href="site-assets/egodepth-bench.pdf">Paper <small>PDF</small></a><a href="#film">Project film <small>2:40</small></a><a href="https://github.com/Chris004869/EgoDepth-Bench/tree/main">Code <small>GitHub</small></a></div>
+      </header>
+
+      <figure class="cover-plate">
+        <div class="cover-shots" role="group" aria-label="Open a featured sequence">
+          <a class="cover-shot" data-feature="mahjong" href="site-assets/sequences/mahjong.mp4" aria-label="Explore the mahjong tiles sequence"><span class="cover-crop" aria-hidden="true"></span><span class="shot-label">Mahjong tiles</span></a>
+          <a class="cover-shot" data-feature="kitchen" href="site-assets/sequences/kitchen.mp4" aria-label="Explore the kitchen worktop sequence"><span class="cover-crop" aria-hidden="true"></span><span class="shot-label">Kitchen worktop</span></a>
+          <a class="cover-shot" data-feature="garment" href="site-assets/sequences/garment.mp4" aria-label="Explore the garment rack sequence"><span class="cover-crop" aria-hidden="true"></span><span class="shot-label">Garment rack</span></a>
+        </div>
+        <figcaption class="cover-legend"><span>The same instant in camera 2, shown in RGB (left) and reference depth (right).</span><a href="#sequence-gallery">Explore all seven clips</a></figcaption>
+      </figure>
+
+      <section class="overview" aria-labelledby="overview-title">
+        <div class="overview-copy"><h2 id="overview-title">The benchmark</h2>
+          <p>During manipulation, the hands, the object and the camera can all move at once. EgoDepth-Bench pairs six synchronized fisheye views with metric depth on the grid of one reference camera. Monocular, stereo and multi-view methods can be compared on the same interaction.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Timestamps</dt><dd>941,233</dd></div><div><dt>Physical sites</dt><dd>37</dd></div>
+          <div><dt>Recordings</dt><dd>1,155</dd></div><div><dt>Recorded time</dt><dd>8.72 <small>h</small></dd></div>
+        </dl>
+      </section>
+
+      <section id="sequence-gallery" class="sequence-gallery chapter" tabindex="-1" aria-labelledby="sequence-heading" data-fps="30" data-frames="180">
+        <div class="section-intro"><h2 id="sequence-heading">Interactive sequences</h2>
+          <p>Seven six-second clips from six training sites. <span class="player-hint">Drag the divider to reveal depth as the hands move, or pause and step through individual frames.</span><noscript>Open a clip to watch its aligned RGB and depth views side by side.</noscript></p></div>
+        <div class="sequence-layout">
+          <div class="sequence-player">
+            <div class="sequence-top">
+              <div><p class="sequence-camera">Camera 2 · Native fisheye</p><h2 id="sequence-title" aria-live="polite">Mahjong tiles</h2></div>
+              <div class="sequence-modes js-control" role="group" aria-label="Comparison layout">
+                <button type="button" data-mode="wipe" aria-pressed="true">Wipe</button>
+                <button type="button" data-mode="pair" aria-pressed="false">Side by side</button>
+              </div>
+            </div>
+            <div class="sequence-stage">
+              <div class="sequence-frame">
+                <video id="sequence-video" muted playsinline loop preload="none" hidden aria-hidden="true"></video>
+                <img id="sequence-poster" src="site-assets/sequences/mahjong-poster.webp" width="1024" height="416" alt="Synchronized RGB and reference depth of a pair of hands at a mahjong table.">
+                <canvas id="sequence-screen" width="512" height="416" hidden role="img" aria-label="Mahjong tiles, camera 2 RGB and reference depth"></canvas>
+                <div class="sequence-labels js-control" aria-hidden="true"><span id="sequence-left">Reference depth</span><span id="sequence-right">RGB</span></div>
+                <div class="sequence-divider js-control" aria-hidden="true"><span></span></div>
+                <input id="sequence-wipe" class="js-control" type="range" min="0" max="100" value="50" step="1" aria-label="Depth coverage from all RGB to all reference depth">
+              </div>
+            </div>
+            <div class="sequence-transport js-control" role="group" aria-label="Sequence playback">
+              <button type="button" id="sequence-play"><span aria-hidden="true"></span><span class="play-text">Play</span></button>
+              <input id="sequence-seek" type="range" aria-label="Seek in the current sequence" min="0" max="5.966667" step="any" value="0">
+              <span class="sequence-time" id="sequence-time">0.0 / 6.0 s</span>
+              <div class="frame-steps">
+                <button type="button" data-step="-1" aria-label="Previous frame" title="Previous frame">‹</button>
+                <button type="button" data-step="1" aria-label="Next frame" title="Next frame">›</button>
+              </div>
+            </div>
+            <p id="sequence-message" role="status" hidden></p>
+          </div>
+          <div class="sequence-library">
+            <div class="library-heading"><h3>Scenes</h3><span>7 clips</span></div>
+            <div class="scene-choices js-control" role="group" aria-label="Choose a sequence">
+              <button type="button" data-scene="mahjong" aria-pressed="true">
+                <img src="site-assets/sequences/mahjong-thumb.webp" width="256" height="208" alt="">
+                <span>Mahjong tiles</span>
+              </button>
+              <button type="button" data-scene="kitchen" aria-pressed="false">
+                <img src="site-assets/sequences/kitchen-thumb.webp" width="256" height="208" alt="">
+                <span>Kitchen worktop</span>
+              </button>
+              <button type="button" data-scene="controllers" aria-pressed="false">
+                <img src="site-assets/sequences/controllers-thumb.webp" width="256" height="208" alt="">
+                <span>Remote controls</span>
+              </button>
+              <button type="button" data-scene="garment" aria-pressed="false">
+                <img src="site-assets/sequences/garment-thumb.webp" width="256" height="208" alt="">
+                <span>Garment rack</span>
+              </button>
+              <button type="button" data-scene="towel" aria-pressed="false">
+                <img src="site-assets/sequences/towel-thumb.webp" width="256" height="208" alt="">
+                <span>Bed linens</span>
+              </button>
+              <button type="button" data-scene="bathroom" aria-pressed="false">
+                <img src="site-assets/sequences/bathroom-thumb.webp" width="256" height="208" alt="">
+                <span>Bathroom linens</span>
+              </button>
+              <button type="button" data-scene="tabletop" aria-pressed="false">
+                <img src="site-assets/sequences/tabletop-thumb.webp" width="256" height="208" alt="">
+                <span>Wooden table</span>
+              </button>
+            </div>
+            <noscript><ul class="sequence-downloads">
+                <li><a href="site-assets/sequences/mahjong.mp4">Mahjong tiles</a></li>
+                <li><a href="site-assets/sequences/kitchen.mp4">Kitchen worktop</a></li>
+                <li><a href="site-assets/sequences/controllers.mp4">Remote controls</a></li>
+                <li><a href="site-assets/sequences/garment.mp4">Garment rack</a></li>
+                <li><a href="site-assets/sequences/towel.mp4">Bed linens</a></li>
+                <li><a href="site-assets/sequences/bathroom.mp4">Bathroom linens</a></li>
+                <li><a href="site-assets/sequences/tabletop.mp4">Wooden table</a></li>
+            </ul></noscript>
+            <div class="library-key">
+              <span>Reference depth <i>(m)</i></span>
+              <div class="depth-scale"><span>0.25</span><img src="site-assets/observation/z-scale.png" alt="Color scale from purple through green to red" width="100" height="5"><span>2 m</span><span class="invalid-swatch"></span><span>Invalid</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="sequence-caption">
+          <p>Camera 2 RGB and reference depth · Full 512 × 416 frame · 30 Hz. Colors show optical-axis distance, saturated outside 0.25–2 m. Gray marks pixels without reference depth.</p>
+          <div class="sequence-files"><a id="sequence-original" href="site-assets/sequences/mahjong-poster.webp">Lossless first frame</a><a id="sequence-file" href="site-assets/sequences/mahjong.mp4">Paired MP4</a></div>
+        </div>
+        <details class="sequence-rig">
+          <summary>Paper Fig. 1 · Six synchronized views at 2.0 s in the mahjong clip</summary>
+          <div class="rig-images">
+            <a href="site-assets/observation/camera-0.webp" aria-label="Open the full camera 0 RGB image"><img loading="lazy" src="site-assets/observation/camera-0.webp" width="512" height="416" alt="Synchronized camera 0 view"><span>0</span></a>
+            <a href="site-assets/observation/camera-1.webp" aria-label="Open the full camera 1 RGB image"><img loading="lazy" src="site-assets/observation/camera-1.webp" width="512" height="416" alt="Synchronized camera 1 view"><span>1</span></a>
+            <a href="site-assets/observation/camera-2.webp" aria-label="Open the full camera 2 RGB image"><img loading="lazy" src="site-assets/observation/camera-2.webp" width="512" height="416" alt="Synchronized camera 2 view"><span>2</span></a>
+            <a href="site-assets/observation/camera-3.webp" aria-label="Open the full camera 3 RGB image"><img loading="lazy" src="site-assets/observation/camera-3.webp" width="512" height="416" alt="Synchronized camera 3 view"><span>3</span></a>
+            <a href="site-assets/observation/camera-4.webp" aria-label="Open the full camera 4 RGB image"><img loading="lazy" src="site-assets/observation/camera-4.webp" width="512" height="416" alt="Synchronized camera 4 view"><span>4</span></a>
+            <a href="site-assets/observation/camera-5.webp" aria-label="Open the full camera 5 RGB image"><img loading="lazy" src="site-assets/observation/camera-5.webp" width="512" height="416" alt="Synchronized camera 5 view"><span>5</span></a>
+          </div>
+          <div class="sequence-figure-links"><a href="site-assets/teaser.webp">Open original figure</a><a href="site-assets/observation/reference-z.webp">Camera 2 reference depth</a></div>
+        </details>
+      </section>
+
+      <section class="chapter" id="dataset">
+        <div class="section-intro"><h2>Capture and reference depth</h2>
+          <p>Six RGB cameras and five active-infrared stereo modules share a 30 Hz trigger. Five participants wore the rig during everyday tasks. The split holds out entire sites, with 24 for training, five for validation and eight for testing.</p></div>
+        <figure class="paper-figure"><a aria-label="Enlarge the ground-truth reconstruction diagram" href="site-assets/figures/gt-pipeline.webp"><img loading="lazy" width="2582" height="1290" src="site-assets/figures/gt-pipeline.webp" alt="Capture rig, five infrared stereo pairs, module-level depth checks, and fusion into camera 2."></a>
+          <figcaption class="legend"><span><b>Fig. 2.</b> Five infrared stereo pairs supply depth in overlapping parts of the workspace. After consistency and visibility checks, the measurements are fused into a 512 × 416 map aligned with camera 2.</span><a href="site-assets/figures/gt-pipeline.pdf">Vector PDF</a></figcaption></figure>
+        <div class="validation">
+          <div class="validation-copy"><h3>Checking metric scale</h3>
+            <p>The rig measures a ball-bar with a certified sphere spacing of 499.9903 mm. Across 1,220 accepted measurements, the absolute spacing error is</p>
+            <dl class="scale-facts"><div><dt>Median</dt><dd>1.27 <small>mm</small></dd></div><div><dt>95th percentile</dt><dd>6.66 <small>mm</small></dd></div></dl>
+          </div>
+          <figure class="paper-figure"><a aria-label="Enlarge the ball-bar figure" href="site-assets/figures/ballbar-validation.webp"><img loading="lazy" width="2686" height="1332" src="site-assets/figures/ballbar-validation.webp" alt="Ball-bar apparatus, observed spheres and geometric fits used to recover their center spacing."></a><figcaption class="legend"><span><b>Fig. 3.</b> Physical validation of reconstructed dimensions.</span><a href="site-assets/figures/ballbar-validation.pdf">Vector PDF</a></figcaption></figure>
+        </div>
+      </section>
+      <section class="chapter" id="qualitative">
+        <div class="section-intro"><h2>Qualitative comparisons</h2><div>
+          <p>Compare the same held-out interaction across four predictions and the reference depth. Follow the contours around the <span class="roi hand">hand</span> and <span class="roi object">object</span>. Gray denotes invalid depth.</p>
+          <a href="site-assets/figures/qualitative-full.webp">Open the complete paper figure</a></div></div>
+        <div class="switches" data-switches aria-label="Select a test scene" hidden>
+<button type="button" aria-controls="scene-a" aria-pressed="true">Dining room</button>
+<button type="button" aria-controls="scene-b" aria-pressed="false">Guesthouse</button>
+<button type="button" aria-controls="scene-c" aria-pressed="false">Training center</button>
+</div>
+<figure class="case-figure" id="scene-a">
+          <a href="site-assets/figures/qualitative-a-desktop.webp" aria-label="Enlarge predictions for the dining room example"><picture>
+            <source media="(max-width:760px)" width="1605" height="1887" srcset="site-assets/figures/qualitative-a-mobile.webp">
+            <source media="(max-width:1050px)" width="2276" height="1266" srcset="site-assets/figures/qualitative-a-tablet.webp">
+            <img loading="lazy" width="4227" height="636" src="site-assets/figures/qualitative-a-desktop.webp" alt="Dining room RGB with hand and object contours, reference Z-depth, UniDepth v2, FoundationStereo, public MapAnything and fine-tuned MapAnything."></picture></a>
+          <figcaption class="legend"><span><b>Fig. 5a.</b> Dining room. All depth maps in this scene share a 0–3 m scale. The two MapAnything conditions use the same six views, calibrated rays and rig poses.</span></figcaption>
+        </figure>
+<figure class="case-figure" id="scene-b">
+          <a href="site-assets/figures/qualitative-b-desktop.webp" aria-label="Enlarge predictions for the guesthouse example"><picture>
+            <source media="(max-width:760px)" width="1605" height="1887" srcset="site-assets/figures/qualitative-b-mobile.webp">
+            <source media="(max-width:1050px)" width="2276" height="1266" srcset="site-assets/figures/qualitative-b-tablet.webp">
+            <img loading="lazy" width="4227" height="636" src="site-assets/figures/qualitative-b-desktop.webp" alt="Guesthouse RGB with hand and object contours, reference Z-depth, UniDepth v2, FoundationStereo, public MapAnything and fine-tuned MapAnything."></picture></a>
+          <figcaption class="legend"><span><b>Fig. 5b.</b> Guesthouse. All depth maps in this scene share a 0–5.5 m scale. The two MapAnything conditions use the same six views, calibrated rays and rig poses.</span></figcaption>
+        </figure>
+<figure class="case-figure" id="scene-c">
+          <a href="site-assets/figures/qualitative-c-desktop.webp" aria-label="Enlarge predictions for the training center example"><picture>
+            <source media="(max-width:760px)" width="1605" height="1890" srcset="site-assets/figures/qualitative-c-mobile.webp">
+            <source media="(max-width:1050px)" width="2276" height="1268" srcset="site-assets/figures/qualitative-c-tablet.webp">
+            <img loading="lazy" width="4227" height="642" src="site-assets/figures/qualitative-c-desktop.webp" alt="Training center RGB with hand and object contours, reference Z-depth, UniDepth v2, FoundationStereo, public MapAnything and fine-tuned MapAnything."></picture></a>
+          <figcaption class="legend"><span><b>Fig. 5c.</b> Training center. All depth maps in this scene share a 0–2.5 m scale. The two MapAnything conditions use the same six views, calibrated rays and rig poses.</span></figcaption>
+        </figure>
+
+      </section>
+      <section class="chapter" id="results">
+        <div class="section-intro"><h2>Quantitative results</h2>
+          <p>Evaluation covers 6,574 timestamps at eight held-out sites, weighted equally. Depth error is measured where a method predicts within the 0.25–2 m reference domain. Coverage is the fraction of that domain predicted.</p></div>
+        <div class="findings">
+          <div class="coverage-finding">
+            <h3>Accuracy and coverage</h3>
+            <p>FoundationStereo · public checkpoint · two views</p>
+            <dl class="finding-values"><div><dt>Full-image AbsRel ↓</dt><dd>0.068</dd></div><div><dt>Reference coverage</dt><dd>35.4<span>%</span></dd></div></dl>
+          </div>
+          <figure class="adapt-finding">
+            <figcaption><h3>Adapting MapAnything</h3>
+              <p>Full-image AbsRel ↓ · six views and rig poses · 100% coverage for all three conditions</p></figcaption>
+            <dl class="bar-chart">
+              <div><dt>Public</dt><dd><span class="bar-track" aria-hidden="true"><i style="width:88.5%"></i></span><span>0.708</span></dd></div>
+              <div><dt>Scale-only</dt><dd><span class="bar-track" aria-hidden="true"><i style="width:75.125%"></i></span><span>0.601</span></dd></div>
+              <div><dt>Fine-tuned</dt><dd><span class="bar-track" aria-hidden="true"><i style="width:11.375%"></i></span><span>0.091</span></dd></div>
+            </dl>
+          </figure>
+        </div>
+        <div class="results-group"><div class="switches" data-switches aria-label="Select a results table" hidden>
+<button type="button" aria-controls="paper-baselines" aria-pressed="true">Public checkpoints</button>
+<button type="button" aria-controls="paper-adaptation" aria-pressed="false">Fine-tuning</button>
+<button type="button" aria-controls="paper-views" aria-pressed="false">View count</button>
+</div>
+<section class="paper-table-section" id="paper-baselines" data-paper-table="baselines" aria-labelledby="paper-baselines-title">
+<h3 id="paper-baselines-title">Public-checkpoint benchmark</h3>
+<p class="paper-table-intro">The table groups 18 public models by input and scale convention. Hand and object results use 291 and 257 reference-supported annotated frames, respectively.</p>
+<p class="paper-scroll-hint" id="paper-baselines-scroll-hint">Scroll horizontally on narrow screens to see all metrics.</p>
+<div class="paper-table-scroll" role="region" tabindex="0" aria-label="Public-checkpoint results, horizontally scrollable" aria-describedby="paper-baselines-scroll-hint">
+<table class="paper-data-table paper-main-table" id="paper-baseline-table">
+<caption>Full-image, hand and object results</caption>
+<thead>
+<tr><th rowspan="2" scope="col">Method</th><th rowspan="2" scope="col">Views</th><th colspan="4" scope="colgroup">Main test set · full image</th><th colspan="2" scope="colgroup">Hands · annotated subset</th><th colspan="2" scope="colgroup">Objects · annotated subset</th></tr>
+<tr><th scope="col">AbsRel ↓</th><th scope="col">MAE<sub>Z</sub> ↓<span class="paper-metric-unit">cm</span></th><th scope="col">δ<sub>1</sub> ↑</th><th scope="col">Coverage ↑<span class="paper-metric-unit">%</span></th><th scope="col">MAE<sub>Z</sub> ↓<span class="paper-metric-unit">cm</span></th><th scope="col">Coverage ↑<span class="paper-metric-unit">%</span></th><th scope="col">MAE<sub>Z</sub> ↓<span class="paper-metric-unit">cm</span></th><th scope="col">Coverage ↑<span class="paper-metric-unit">%</span></th></tr>
+</thead>
+<tbody aria-labelledby="paper-main-group-1"><tr class="paper-group-row"><th colspan="10" scope="rowgroup" id="paper-main-group-1">Metric monocular: camera 2; model-supported calibration; no alignment</th></tr>
+<tr data-method="unidepth_v2"><th scope="row">UniDepth v2</th><td data-value="1">1</td><td data-value="0.201">0.201</td><td data-value="15.44">15.44</td><td data-value="0.706">0.706</td><td data-value="100.0">100.0</td><td data-value="15.05">15.05</td><td data-value="100.0">100.0</td><td data-value="11.52">11.52</td><td data-value="100.0">100.0</td></tr>
+<tr data-method="depth_pro"><th scope="row">Depth Pro</th><td data-value="1">1</td><td data-value="2.152">2.152</td><td data-value="149.66">149.66</td><td data-value="0.019">0.019</td><td data-value="100.0">100.0</td><td data-value="78.01">78.01</td><td data-value="100.0">100.0</td><td data-value="90.91">90.91</td><td data-value="100.0">100.0</td></tr>
+<tr data-method="metric3d_v2"><th scope="row">Metric3D v2</th><td data-value="1">1</td><td data-value="0.452">0.452</td><td data-value="37.37">37.37</td><td data-value="0.296">0.296</td><td data-value="100.0">100.0</td><td data-value="17.95">17.95</td><td data-value="100.0">100.0</td><td data-value="20.66">20.66</td><td data-value="100.0">100.0</td></tr>
+<tr data-method="depth_anything_3"><th scope="row">DA3 Metric-Large</th><td data-value="1">1</td><td data-value="0.458">0.458</td><td data-value="31.61">31.61</td><td data-value="0.414">0.414</td><td data-value="100.0">100.0</td><td data-value="10.72">10.72</td><td data-value="100.0">100.0</td><td data-value="12.19">12.19</td><td data-value="100.0">100.0</td></tr>
+<tr data-method="zoedepth"><th scope="row">ZoeDepth</th><td data-value="1">1</td><td data-value="2.457">2.457</td><td data-value="159.24">159.24</td><td data-value="0.006">0.006</td><td data-value="100.0">100.0</td><td data-value="115.11">115.11</td><td data-value="100.0">100.0</td><td data-value="116.82">116.82</td><td data-value="100.0">100.0</td></tr>
+<tr data-method="unik3d"><th scope="row">UniK3D</th><td data-value="1">1</td><td data-value="0.392">0.392</td><td data-value="30.63">30.63</td><td data-value="0.387">0.387</td><td data-value="100.0">100.0</td><td data-value="33.77">33.77</td><td data-value="100.0">100.0</td><td data-value="31.33">31.33</td><td data-value="100.0">100.0</td></tr>
+<tr data-method="dac"><th scope="row">DAC</th><td data-value="1">1</td><td data-value="0.411">0.411</td><td data-value="38.91">38.91</td><td data-value="0.246">0.246</td><td data-value="96.7">96.7</td><td data-value="9.92">9.92</td><td data-value="99.3">99.3</td><td data-value="17.74">17.74</td><td data-value="99.9">99.9</td></tr>
+<tr data-method="unidac"><th scope="row">UniDAC</th><td data-value="1">1</td><td data-value="0.242">0.242</td><td data-value="20.30">20.30</td><td data-value="0.519">0.519</td><td data-value="99.2">99.2</td><td data-value="16.88">16.88</td><td data-value="100.0">100.0</td><td data-value="14.04">14.04</td><td data-value="100.0">100.0</td></tr>
+</tbody>
+<tbody aria-labelledby="paper-main-group-2"><tr class="paper-group-row"><th colspan="10" scope="rowgroup" id="paper-main-group-2">Calibrated RGB stereo: cameras 2–3; rectified overlap; no alignment</th></tr>
+<tr data-method="foundation_stereo"><th scope="row">FoundationStereo</th><td data-value="2">2</td><td data-value="0.068">0.068</td><td data-value="7.35">7.35</td><td data-value="0.951">0.951</td><td data-value="35.4">35.4</td><td data-value="2.15">2.15</td><td data-value="72.8">72.8</td><td data-value="2.52">2.52</td><td data-value="81.0">81.0</td></tr>
+<tr data-method="geostereo"><th scope="row">GeoStereo</th><td data-value="2">2</td><td data-value="0.078">0.078</td><td data-value="8.24">8.24</td><td data-value="0.954">0.954</td><td data-value="35.4">35.4</td><td data-value="2.28">2.28</td><td data-value="72.8">72.8</td><td data-value="2.75">2.75</td><td data-value="81.0">81.0</td></tr>
+</tbody>
+<tbody aria-labelledby="paper-main-group-3"><tr class="paper-group-row"><th colspan="10" scope="rowgroup" id="paper-main-group-3">Metric reconstruction from RGB: no supplied rig poses; no alignment</th></tr>
+<tr data-method="mast3r"><th scope="row">MASt3R</th><td data-value="2">2</td><td data-value="1.499">1.499</td><td data-value="93.22">93.22</td><td data-value="0.074">0.074</td><td data-value="100.0">100.0</td><td data-value="70.06">70.06</td><td data-value="100.0">100.0</td><td data-value="66.06">66.06</td><td data-value="100.0">100.0</td></tr>
+<tr data-method="cut3r"><th scope="row">CUT3R</th><td data-value="6">6</td><td data-value="1.100">1.100</td><td data-value="64.58">64.58</td><td data-value="0.184">0.184</td><td data-value="100.0">100.0</td><td data-value="64.17">64.17</td><td data-value="100.0">100.0</td><td data-value="62.93">62.93</td><td data-value="100.0">100.0</td></tr>
+</tbody>
+<tbody aria-labelledby="paper-main-group-4"><tr class="paper-group-row"><th colspan="10" scope="rowgroup" id="paper-main-group-4">Metric multi-view with calibration: synchronized RGB and per-camera rays; no alignment</th></tr>
+<tr data-method="mapanything_6view"><th scope="row">MapAnything</th><td data-value="6">6</td><td data-value="3.168">3.168</td><td data-value="200.76">200.76</td><td data-value="0.031">0.031</td><td data-value="100.0">100.0</td><td data-value="198.23">198.23</td><td data-value="100.0">100.0</td><td data-value="179.28">179.28</td><td data-value="100.0">100.0</td></tr>
+<tr data-method="mapanything_6view_rig"><th scope="row">MapAnything + rig</th><td data-value="6">6</td><td data-value="0.708">0.708</td><td data-value="49.07">49.07</td><td data-value="0.204">0.204</td><td data-value="100.0">100.0</td><td data-value="36.51">36.51</td><td data-value="100.0">100.0</td><td data-value="33.81">33.81</td><td data-value="100.0">100.0</td></tr>
+</tbody>
+<tbody aria-labelledby="paper-main-group-5"><tr class="paper-group-row paper-oracle-group"><th colspan="10" scope="rowgroup" id="paper-main-group-5">Oracle-aligned multi-view: synchronized RGB; scale-only alignment</th></tr>
+<tr data-method="vggt"><th scope="row">VGGT</th><td data-value="6">6</td><td data-value="0.428">0.428</td><td data-value="30.59">30.59</td><td data-value="0.365">0.365</td><td data-value="100.0">100.0</td><td data-value="21.90">21.90</td><td data-value="100.0">100.0</td><td data-value="16.83">16.83</td><td data-value="100.0">100.0</td></tr>
+<tr data-method="vggt_omega"><th scope="row">VGGT-Ω</th><td data-value="6">6</td><td data-value="0.284">0.284</td><td data-value="19.60">19.60</td><td data-value="0.553">0.553</td><td data-value="100.0">100.0</td><td data-value="10.43">10.43</td><td data-value="100.0">100.0</td><td data-value="12.66">12.66</td><td data-value="100.0">100.0</td></tr>
+</tbody>
+<tbody aria-labelledby="paper-main-group-6"><tr class="paper-group-row paper-oracle-group"><th colspan="10" scope="rowgroup" id="paper-main-group-6">Oracle-aligned monocular: camera 2; representation-specific alignment</th></tr>
+<tr data-method="depth_anything_v2"><th scope="row">Depth Anything v2</th><td data-value="1">1</td><td data-value="0.247">0.247</td><td data-value="20.55">20.55</td><td data-value="0.533">0.533</td><td data-value="100.0">100.0</td><td data-value="6.57">6.57</td><td data-value="100.0">100.0</td><td data-value="11.51">11.51</td><td data-value="100.0">100.0</td></tr>
+<tr data-method="marigold"><th scope="row">Marigold</th><td data-value="1">1</td><td data-value="0.275">0.275</td><td data-value="19.01">19.01</td><td data-value="0.569">0.569</td><td data-value="100.0">100.0</td><td data-value="13.44">13.44</td><td data-value="100.0">100.0</td><td data-value="12.51">12.51</td><td data-value="100.0">100.0</td></tr>
+<tr data-method="moge"><th scope="row">MoGe</th><td data-value="1">1</td><td data-value="0.323">0.323</td><td data-value="21.13">21.13</td><td data-value="0.497">0.497</td><td data-value="100.0">100.0</td><td data-value="14.13">14.13</td><td data-value="100.0">100.0</td><td data-value="12.77">12.77</td><td data-value="100.0">100.0</td></tr>
+</tbody></table></div>
+<details class="table-definitions"><summary>Metric definitions and experimental conditions</summary>
+<p><strong>Read error with coverage.</strong> AbsRel, MAE<sub>Z</sub>, and δ<sub>1</sub> are computed on the intersection of valid reference and prediction support. Coverage is the predicted fraction of the valid reference domain in 0.25–2.0 m. δ<sub>1</sub> uses the 1.25 threshold. Pixels pool within sites, then sites receive equal weight. Coverage is rounded as in the paper.</p>
+<p><strong>Input conventions.</strong> Monocular models receive camera 2; stereo receives cameras 2/3 rectified to an 800 × 640, 90° horizontal field of view. Six-view methods receive synchronized cameras. MapAnything uses its Apache checkpoint and per-camera calibrated rays; “+ rig” also supplies metric camera-to-rig poses. The two MapAnything rows are conditions of the same model, not two independent models.</p>
+<p><strong>Metric and oracle groups are different settings.</strong> Metric outputs are not aligned. Oracle alignment uses target-frame ground truth: a positive least-squares Z scale for VGGT, VGGT-Ω, and MoGe; affine inverse depth for Depth Anything v2; and affine Z for Marigold. A single full-target fit is reused for all regions. These oracle scores do not establish metric scale recovery.</p>
+</details></section>
+<section class="paper-table-section" id="paper-adaptation" data-paper-table="adaptation" aria-labelledby="paper-adaptation-title">
+<h3 id="paper-adaptation-title">Adaptation with matched inputs</h3>
+<p class="paper-table-intro">Public, Scale-only, and Fine-tuned MapAnything share Apache initialization, six RGB views, calibrated rays, and metric rig poses. Test sites are held out from fine-tuning.</p>
+<p class="paper-scroll-hint" id="paper-adaptation-scroll-hint">Scroll horizontally on narrow screens to compare all three conditions.</p>
+<div class="paper-table-scroll" role="region" tabindex="0" aria-label="MapAnything adaptation results, horizontally scrollable" aria-describedby="paper-adaptation-scroll-hint">
+<table class="paper-data-table paper-adaptation-table" id="paper-adaptation-table">
+<caption>MapAnything adaptation: metric results and separate oracle-aligned diagnostics</caption>
+<thead><tr><th scope="col">Evaluation</th><th scope="col">Public</th><th scope="col">Scale-only</th><th scope="col">Fine-tuned</th></tr></thead>
+<tbody aria-labelledby="paper-adaptation-group-0"><tr class="paper-group-row"><th colspan="4" scope="rowgroup" id="paper-adaptation-group-0">Full image</th></tr>
+<tr><th scope="row">AbsRel ↓</th><td data-value="0.708">0.708</td><td data-value="0.601">0.601</td><td data-value="0.091">0.091</td></tr>
+<tr><th scope="row">MAE<sub>Z</sub> (cm) ↓</th><td data-value="49.07">49.07</td><td data-value="43.05">43.05</td><td data-value="7.03">7.03</td></tr>
+<tr><th scope="row">Coverage (%) ↑</th><td data-value="100.0">100.0</td><td data-value="100.0">100.0</td><td data-value="100.0">100.0</td></tr>
+</tbody>
+<tbody aria-labelledby="paper-adaptation-group-3"><tr class="paper-group-row"><th colspan="4" scope="rowgroup" id="paper-adaptation-group-3">Annotated subset</th></tr>
+<tr><th scope="row">Hand MAE<sub>Z</sub> (cm) ↓</th><td data-value="36.51">36.51</td><td data-value="30.55">30.55</td><td data-value="3.82">3.82</td></tr>
+<tr><th scope="row">Object MAE<sub>Z</sub> (cm) ↓</th><td data-value="33.81">33.81</td><td data-value="29.05">29.05</td><td data-value="5.21">5.21</td></tr>
+<tr><th scope="row">Object A<sub>5cm</sub> (%) ↑</th><td data-value="11.91">11.91</td><td data-value="12.02">12.02</td><td data-value="59.96">59.96</td></tr>
+<tr><th scope="row">Object coverage (%) ↑</th><td data-value="100.0">100.0</td><td data-value="100.0">100.0</td><td data-value="100.0">100.0</td></tr>
+<tr><th scope="row">Active-object A<sub>5cm</sub> (%) ↑</th><td data-value="14.12">14.12</td><td data-value="13.65">13.65</td><td data-value="61.79">61.79</td></tr>
+<tr><th scope="row">Active-object coverage (%) ↑</th><td data-value="100.0">100.0</td><td data-value="100.0">100.0</td><td data-value="100.0">100.0</td></tr>
+</tbody>
+<tbody aria-labelledby="paper-adaptation-group-9"><tr class="paper-group-row paper-oracle-group"><th colspan="4" scope="rowgroup" id="paper-adaptation-group-9">Oracle-aligned on common support</th></tr>
+<tr><th scope="row">Aligned AbsRel ↓</th><td data-value="0.327">0.327</td><td data-value="0.327">0.327</td><td data-value="0.072">0.072</td></tr>
+<tr><th scope="row">Aligned object MAE<sub>Z</sub> (cm) ↓</th><td data-value="12.44">12.44</td><td data-value="12.44">12.44</td><td data-value="4.78">4.78</td></tr>
+</tbody></table></div>
+<details class="table-definitions"><summary>Metric definitions and experimental conditions</summary>
+<p><strong>Training-set calibration is not test-frame alignment.</strong> Scale-only freezes the network and fits one positive multiplier on 1,024 unique training samples with frame-mean log-Z Huber loss. The multiplier stays fixed across test samples. Fine-tuned predictions are direct metric outputs and are not multiplied by this calibration.</p>
+<p><strong>A<sub>5cm</sub> includes missing predictions as failures.</strong> It is the percentage of eligible reference pixels predicted within 5 cm in optical-axis Z. Hand/object rows use accepted regions in the diagnostic subset; they do not describe fully annotated hands and objects on every test frame.</p>
+<p><strong>Aligned rows are separate diagnostics.</strong> Each frame and arm fits an independent positive scale on full-image common support shared by Public and Fine-tuned; that fit is reused for object scoring. The reported fine-tuning uses one validation-selected run (6,000 steps, batch 36, seed 20260912), not an average across training seeds.</p>
+</details></section>
+<section class="paper-table-section" id="paper-views" data-paper-table="views" aria-labelledby="paper-views-title">
+<h3 id="paper-views-title">Views and rig geometry</h3>
+<p class="paper-table-intro">One fixed Apache MapAnything checkpoint, with calibrated rays for every input view. “6 + rig” additionally receives metric camera-to-rig poses; all conditions omit depth hints and optional multi-view confidence filtering.</p>
+<p class="paper-scroll-hint" id="paper-views-scroll-hint">Scroll horizontally on narrow screens to see the accuracy and cost columns.</p>
+<div class="paper-table-scroll" role="region" tabindex="0" aria-label="View-count and rig-geometry results, horizontally scrollable" aria-describedby="paper-views-scroll-hint">
+<table class="paper-data-table paper-view-table" id="paper-view-table">
+<caption>View count and rig poses: unaligned metric depth and measured forward cost</caption>
+<thead><tr><th rowspan="2" scope="col">Views</th><th colspan="2" scope="colgroup">Full image</th><th colspan="2" scope="colgroup">Objects · annotated subset</th><th colspan="2" scope="colgroup">Cost · RTX 4090</th></tr>
+<tr><th scope="col">AbsRel ↓</th><th scope="col">MAE<sub>Z</sub> ↓<span class="paper-metric-unit">cm</span></th><th scope="col">MAE<sub>Z</sub> ↓<span class="paper-metric-unit">cm</span></th><th scope="col">A<sub>5cm</sub> ↑<span class="paper-metric-unit">%</span></th><th scope="col">Forward time ↓<span class="paper-metric-unit">ms</span></th><th scope="col">Peak memory ↓<span class="paper-metric-unit">GB</span></th></tr></thead><tbody>
+<tr data-method="mapanything_1view"><th scope="row">1</th><td data-value="2.800">2.800</td><td data-value="176.70">176.70</td><td data-value="173.19">173.19</td><td data-value="0.01">0.01</td><td data-value="58">58</td><td data-value="7.7">7.7</td></tr>
+<tr data-method="mapanything_2view"><th scope="row">2</th><td data-value="3.392">3.392</td><td data-value="211.34">211.34</td><td data-value="188.00">188.00</td><td data-value="0.03">0.03</td><td data-value="88">88</td><td data-value="8.2">8.2</td></tr>
+<tr data-method="mapanything_6view"><th scope="row">6</th><td data-value="3.168">3.168</td><td data-value="200.76">200.76</td><td data-value="179.28">179.28</td><td data-value="0.01">0.01</td><td data-value="233">233</td><td data-value="10.1">10.1</td></tr>
+<tr data-method="mapanything_6view_rig"><th scope="row">6 + rig</th><td data-value="0.708">0.708</td><td data-value="49.07">49.07</td><td data-value="33.81">33.81</td><td data-value="11.91">11.91</td><td data-value="235">235</td><td data-value="10.1">10.1</td></tr>
+</tbody></table></div>
+<details class="table-definitions"><summary>Metric definitions and experimental conditions</summary>
+<p><strong>Coverage.</strong> Full-image coverage is at least 99.99% and object coverage is 100% for all four conditions. One view means camera 2; two views means cameras 2/3; six views means all six synchronized RGB cameras.</p>
+<p><strong>Cost.</strong> Median synchronized forward time and peak allocated GPU memory, batch one, BF16, on RTX 4090. Data loading is excluded. All measured calls are retained; no explicit warmup exclusion was applied.</p>
+<p><strong>Interpretation.</strong> More views alone do not give a clear accuracy gain in this experiment. Rig poses substantially improve metric scale; the distinction between that scale benefit and relative-depth accuracy is analyzed separately in the paper.</p>
+</details></section></div>
+        <details class="diagnostics">
+          <summary>Interaction diagnostics <span>Fig. 4</span></summary>
+          <figure class="paper-figure"><a href="site-assets/figures/interaction-diagnostics.pdf"><img loading="lazy" src="site-assets/figures/interaction-diagnostics.webp" alt="Regional error, threshold accuracy, motion contrasts, and support by depth and field angle."></a><figcaption class="legend"><span>Diagnostics for public checkpoints on 800 frames. In the threshold-accuracy plot, missing predictions count as failures.</span><a href="site-assets/figures/interaction-diagnostics.pdf">Vector PDF</a></figcaption></figure>
+        </details>
+      </section>
+      <section class="chapter" id="film">
+        <div class="section-intro"><h2>Project film</h2><p>The capture rig, the depth reconstruction pipeline and the evaluation in 2 minutes 40 seconds.</p></div>
+        <div class="film-layout">
+          <video id="overview-video" controls playsinline preload="none" width="1280" height="720" poster="site-assets/media/overview-cover.jpg" aria-label="EgoDepth-Bench project film">
+          <source src="site-assets/media/egodepth-bench-overview.mp4" type="video/mp4">
+          <track kind="subtitles" src="site-assets/media/egodepth-bench-en.vtt" srclang="en" label="English descriptions">
+          <track kind="chapters" src="site-assets/media/egodepth-bench-chapters.vtt" srclang="en" label="Chapters">
+          <a href="site-assets/media/egodepth-bench-overview.mp4">Open the project film</a>
+        </video>
+          <div class="film-index"><h3>Chapters</h3><div class="chapter-jumps" hidden aria-label="Jump to a film chapter">
+          <button data-time="6">00:06 <span>Capture rig</span></button><button data-time="32">00:32 <span>Samples</span></button><button data-time="90">01:30 <span>Depth pipeline</span></button><button data-time="116">01:56 <span>Validation</span></button><button data-time="140">02:20 <span>Adaptation</span></button>
+        </div>
+            <a href="site-assets/media/egodepth-bench-overview.mp4">Open full film <small>MP4</small></a>
+          </div>
+        </div>
+      </section>
+      <section class="chapter endmatter" id="citation">
+        <div><h2>Citation</h2><p>The <a href="https://github.com/Chris004869/EgoDepth-Bench/tree/main">evaluation code and archived paper results</a> are available. Dataset and fine-tuned checkpoint links are pending.</p><a class="citation-paper" href="site-assets/egodepth-bench.pdf">Read the manuscript</a></div>
+        <div class="citation-block"><div class="citation-top"><span>BibTeX</span><button type="button" id="copy-citation" hidden>Copy</button></div>
+          <pre tabindex="0"><code id="bibtex">@misc{gao2026egodepthbench,
+  title  = {EgoDepth-Bench: Benchmarking Metric Depth for Egocentric Manipulation},
+  author = {Yuan Gao and Dongchen Wei and Xinyang Lin and Shuhua Cao and
+            Xueliang Guo and Zhuohan Li and Yihao Wang},
+  year   = {2026},
+  note   = {Manuscript}
+}</code></pre><span id="copy-status" aria-live="polite"></span>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="wrap"><span>© 2026 GenRobot</span><span>* Corresponding author · <a href="mailto:gaoyuan100@outlook.com">gaoyuan100@outlook.com</a></span></footer>
+</body>
+</html>
