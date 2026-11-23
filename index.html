@@ -25,7 +25,7 @@
   <header class="mast">
     <div class="wrap mast-inner">
       <a href="#top" class="lab">GenRobot</a>
-      <nav aria-label="Contents"><a href="#sequence-gallery">Sequences</a><a href="#dataset">Capture</a><a href="#qualitative">Predictions</a><a href="#results">Results</a><a href="#citation">Cite</a></nav>
+      <nav aria-label="Contents"><a href="#sequence-gallery">Sequences</a><a href="#dataset">Dataset</a><a href="#qualitative">Predictions</a><a href="#results">Results</a><a href="#citation">Cite</a></nav>
     </div>
   </header>
   <main id="main">
@@ -37,7 +37,12 @@
           <p class="affil">GenRobot</p>
           <p class="affil"><small><span id="corresponding-author">*&nbsp;Corresponding author</span> · <span id="project-lead">†&nbsp;Project lead</span></small></p>
         </div>
-        <div class="paper-links"><a href="site-assets/egodepth-bench.pdf">Paper <small>PDF</small></a><a href="#film">Project film <small>2:40</small></a><a href="https://github.com/Chris004869/EgoDepth-Bench/tree/main">Code <small>GitHub</small></a></div>
+        <div class="paper-links">
+          <a href="site-assets/egodepth-bench.pdf">Paper <small>PDF</small></a>
+          <a href="https://huggingface.co/datasets/genrobot2025/EgoDepth-Bench">Dataset <small>Hugging Face · private</small></a>
+          <a href="https://github.com/Chris004869/EgoDepth-Bench">Code <small>GitHub</small></a>
+          <a href="#film">Project film <small>2:40</small></a>
+        </div>
       </header>
 
       <figure class="cover-plate">
@@ -158,8 +163,11 @@
       </section>
 
       <section class="chapter" id="dataset">
-        <div class="section-intro"><h2>Capture and reference depth</h2>
-          <p>Six RGB cameras and five active-infrared stereo modules share a 30 Hz trigger. Five participants wore the rig during everyday tasks. The split holds out entire sites, with 24 for training, five for validation and eight for testing.</p></div>
+        <div class="section-intro"><h2>Dataset and capture</h2>
+          <div><p>Six RGB cameras and five active-infrared stereo modules share a 30 Hz trigger. Five participants wore the rig during everyday tasks. The split holds out entire sites, with 24 for training, five for validation and eight for testing.</p>
+            <p>The full dataset is hosted in a private Hugging Face repository. Sign in with an account that has repository access.</p>
+            <a href="https://huggingface.co/datasets/genrobot2025/EgoDepth-Bench">Open dataset on Hugging Face</a> · <a href="https://github.com/Chris004869/EgoDepth-Bench/blob/main/docs/DATA.md">Data format and SDK</a>
+          </div></div>
         <figure class="paper-figure"><a aria-label="Enlarge the ground-truth reconstruction diagram" href="site-assets/figures/gt-pipeline.webp"><img loading="lazy" width="2582" height="1290" src="site-assets/figures/gt-pipeline.webp" alt="Capture rig, five infrared stereo pairs, module-level depth checks, and fusion into camera 2."></a>
           <figcaption class="legend"><span><b>Fig. 2.</b> Five infrared stereo pairs supply depth in overlapping parts of the workspace. After consistency and visibility checks, the measurements are fused into a 512 × 416 map aligned with camera 2.</span><a href="site-assets/figures/gt-pipeline.pdf">Vector PDF</a></figcaption></figure>
         <div class="validation">
@@ -344,14 +352,14 @@
         </div>
       </section>
       <section class="chapter endmatter" id="citation">
-        <div><h2>Citation</h2><p>The <a href="https://github.com/Chris004869/EgoDepth-Bench/tree/main">evaluation code and archived paper results</a> are available. Dataset and fine-tuned checkpoint links are pending.</p><a class="citation-paper" href="site-assets/egodepth-bench.pdf">Read the manuscript</a></div>
+        <div><h2>Citation</h2><p>If you use EgoDepth-Bench in your research, please cite the manuscript.</p><a class="citation-paper" href="site-assets/egodepth-bench.pdf">Read the manuscript</a></div>
         <div class="citation-block"><div class="citation-top"><span>BibTeX</span><button type="button" id="copy-citation" hidden>Copy</button></div>
           <pre tabindex="0"><code id="bibtex">@misc{gao2026egodepthbench,
   title  = {EgoDepth-Bench: Benchmarking Metric Depth for Egocentric Manipulation},
-  author = {Yuan Gao and Dongchen Wei and Xinyang Lin and Shuhua Cao and
-            Xueliang Guo and Zhuohan Li and Yihao Wang},
+  author = {Gao, Yuan and Wei, Dongchen and Lin, Xinyang and Cao, Shuhua
+            and Guo, Xueliang and Li, Zhuohan and Wang, Yihao},
   year   = {2026},
-  note   = {Manuscript}
+  url    = {https://egodepth-bench.github.io/}
 }</code></pre><span id="copy-status" aria-live="polite"></span>
         </div>
       </section>
