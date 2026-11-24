@@ -2,7 +2,7 @@
 
 **Benchmarking Metric Depth for Egocentric Manipulation** · GenRobot
 
-[Project page](https://egodepth-bench.github.io/) · [Paper (PDF)](https://egodepth-bench.github.io/site-assets/egodepth-bench.pdf) · [Dataset (Hugging Face)](https://huggingface.co/datasets/genrobot2025/EgoDepth-Bench) · [Evaluation code and quickstart](https://github.com/Chris004869/EgoDepth-Bench#recreate-the-paper-tables)
+[Project page](https://egodepth-bench.github.io/) · [arXiv:2611.30734](https://arxiv.org/abs/2611.30734) · [PDF](https://arxiv.org/pdf/2611.30734) · [Dataset (Hugging Face)](https://huggingface.co/datasets/genrobot2025/EgoDepth-Bench) · [Evaluation code and quickstart](https://github.com/Chris004869/EgoDepth-Bench#recreate-the-paper-tables)
 
 [![Three egocentric manipulation scenes with camera-2 RGB and reference depth side by side.](site-assets/figures/sequence-triptych.webp)](https://egodepth-bench.github.io/#sequence-gallery)
 
